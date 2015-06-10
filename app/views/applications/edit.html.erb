@@ -1,0 +1,471 @@
+<!-- Validation failure messages -->
+
+<% if @application.errors.any? %>
+  <% @application.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Edit Application #<%= @application.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_application/<%= @application.id %>" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for first_name -->
+          <div class="form-group">
+            <label for="first_name" class="col-sm-2 control-label">
+              First name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @application.first_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for middle_name -->
+          <div class="form-group">
+            <label for="middle_name" class="col-sm-2 control-label">
+              Middle name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="middle_name" name="middle_name" placeholder="Middle name" class="form-control" value="<%= @application.middle_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for last_name -->
+          <div class="form-group">
+            <label for="last_name" class="col-sm-2 control-label">
+              Last name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="last_name" name="last_name" placeholder="Last name" class="form-control" value="<%= @application.last_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for dob -->
+          <div class="form-group">
+            <label for="dob" class="col-sm-2 control-label">
+              Dob
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="dob" name="dob" placeholder="Dob" class="form-control" value="<%= @application.dob %>">
+            </div>
+          </div>
+
+          <!-- Label and input for email -->
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">
+              Email
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="email" name="email" placeholder="Email" class="form-control" value="<%= @application.email %>">
+            </div>
+          </div>
+
+          <!-- Label and input for mobile -->
+          <div class="form-group">
+            <label for="mobile" class="col-sm-2 control-label">
+              Mobile
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="mobile" name="mobile" placeholder="Mobile" class="form-control" value="<%= @application.mobile %>">
+            </div>
+          </div>
+
+          <!-- Label and input for address_0 -->
+          <div class="form-group">
+            <label for="address_0" class="col-sm-2 control-label">
+              Address 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="address_0" name="address_0" placeholder="Address 0" class="form-control" value="<%= @application.address_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for city_0 -->
+          <div class="form-group">
+            <label for="city_0" class="col-sm-2 control-label">
+              City 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="city_0" name="city_0" placeholder="City 0" class="form-control" value="<%= @application.city_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for state_0 -->
+          <div class="form-group">
+            <label for="state_0" class="col-sm-2 control-label">
+              State 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="state_0" name="state_0" placeholder="State 0" class="form-control" value="<%= @application.state_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for zip_0 -->
+          <div class="form-group">
+            <label for="zip_0" class="col-sm-2 control-label">
+              Zip 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="zip_0" name="zip_0" placeholder="Zip 0" class="form-control" value="<%= @application.zip_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for address_date_from_0 -->
+          <div class="form-group">
+            <label for="address_date_from_0" class="col-sm-2 control-label">
+              Address date from 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="address_date_from_0" name="address_date_from_0" placeholder="Address date from 0" class="form-control" value="<%= @application.address_date_from_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for address_date_to_0 -->
+          <div class="form-group">
+            <label for="address_date_to_0" class="col-sm-2 control-label">
+              Address date to 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="address_date_to_0" name="address_date_to_0" placeholder="Address date to 0" class="form-control" value="<%= @application.address_date_to_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for rent_0 -->
+          <div class="form-group">
+            <label for="rent_0" class="col-sm-2 control-label">
+              Rent 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="rent_0" name="rent_0" placeholder="Rent 0" class="form-control" value="<%= @application.rent_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for landlord_name_0 -->
+          <div class="form-group">
+            <label for="landlord_name_0" class="col-sm-2 control-label">
+              Landlord name 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="landlord_name_0" name="landlord_name_0" placeholder="Landlord name 0" class="form-control" value="<%= @application.landlord_name_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for landlord_phone_0 -->
+          <div class="form-group">
+            <label for="landlord_phone_0" class="col-sm-2 control-label">
+              Landlord phone 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="landlord_phone_0" name="landlord_phone_0" placeholder="Landlord phone 0" class="form-control" value="<%= @application.landlord_phone_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_name_0 -->
+          <div class="form-group">
+            <label for="employer_name_0" class="col-sm-2 control-label">
+              Employer name 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_name_0" name="employer_name_0" placeholder="Employer name 0" class="form-control" value="<%= @application.employer_name_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_role_0 -->
+          <div class="form-group">
+            <label for="employer_role_0" class="col-sm-2 control-label">
+              Employer role 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_role_0" name="employer_role_0" placeholder="Employer role 0" class="form-control" value="<%= @application.employer_role_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_salary_0 -->
+          <div class="form-group">
+            <label for="employer_salary_0" class="col-sm-2 control-label">
+              Employer salary 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_salary_0" name="employer_salary_0" placeholder="Employer salary 0" class="form-control" value="<%= @application.employer_salary_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_address_0 -->
+          <div class="form-group">
+            <label for="employer_address_0" class="col-sm-2 control-label">
+              Employer address 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_address_0" name="employer_address_0" placeholder="Employer address 0" class="form-control" value="<%= @application.employer_address_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_city_0 -->
+          <div class="form-group">
+            <label for="employer_city_0" class="col-sm-2 control-label">
+              Employer city 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_city_0" name="employer_city_0" placeholder="Employer city 0" class="form-control" value="<%= @application.employer_city_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_state_0 -->
+          <div class="form-group">
+            <label for="employer_state_0" class="col-sm-2 control-label">
+              Employer state 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_state_0" name="employer_state_0" placeholder="Employer state 0" class="form-control" value="<%= @application.employer_state_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_zip_0 -->
+          <div class="form-group">
+            <label for="employer_zip_0" class="col-sm-2 control-label">
+              Employer zip 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_zip_0" name="employer_zip_0" placeholder="Employer zip 0" class="form-control" value="<%= @application.employer_zip_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_date_from_0 -->
+          <div class="form-group">
+            <label for="employer_date_from_0" class="col-sm-2 control-label">
+              Employer date from 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_date_from_0" name="employer_date_from_0" placeholder="Employer date from 0" class="form-control" value="<%= @application.employer_date_from_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_date_to_0 -->
+          <div class="form-group">
+            <label for="employer_date_to_0" class="col-sm-2 control-label">
+              Employer date to 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_date_to_0" name="employer_date_to_0" placeholder="Employer date to 0" class="form-control" value="<%= @application.employer_date_to_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_manager_0 -->
+          <div class="form-group">
+            <label for="employer_manager_0" class="col-sm-2 control-label">
+              Employer manager 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_manager_0" name="employer_manager_0" placeholder="Employer manager 0" class="form-control" value="<%= @application.employer_manager_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for employer_phone_0 -->
+          <div class="form-group">
+            <label for="employer_phone_0" class="col-sm-2 control-label">
+              Employer phone 0
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="employer_phone_0" name="employer_phone_0" placeholder="Employer phone 0" class="form-control" value="<%= @application.employer_phone_0 %>">
+            </div>
+          </div>
+
+          <!-- Label and input for pets_dogs -->
+          <div class="form-group">
+            <label for="pets_dogs" class="col-sm-2 control-label">
+              Pets dogs
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="pets_dogs" name="pets_dogs" placeholder="Pets dogs" class="form-control" value="<%= @application.pets_dogs %>">
+            </div>
+          </div>
+
+          <!-- Label and input for pets_cats -->
+          <div class="form-group">
+            <label for="pets_cats" class="col-sm-2 control-label">
+              Pets cats
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="pets_cats" name="pets_cats" placeholder="Pets cats" class="form-control" value="<%= @application.pets_cats %>">
+            </div>
+          </div>
+
+          <!-- Label and input for pets_other -->
+          <div class="form-group">
+            <label for="pets_other" class="col-sm-2 control-label">
+              Pets other
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="pets_other" name="pets_other" placeholder="Pets other" class="form-control" value="<%= @application.pets_other %>">
+            </div>
+          </div>
+
+          <!-- Label and input for pets_explanation -->
+          <div class="form-group">
+            <label for="pets_explanation" class="col-sm-2 control-label">
+              Pets explanation
+            </label>
+            <div class="col-sm-10">
+              <textarea id="pets_explanation" name="pets_explanation" placeholder="Pets explanation" class="form-control" rows="3"><%= @application.pets_explanation %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for eviction -->
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label for="eviction">
+                  <input type="checkbox" id="eviction" name="eviction" value="1" <%= "checked" if @application.eviction %>>
+                  Eviction
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Label and input for bankruptcy -->
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label for="bankruptcy">
+                  <input type="checkbox" id="bankruptcy" name="bankruptcy" value="1" <%= "checked" if @application.bankruptcy %>>
+                  Bankruptcy
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Label and input for crime -->
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label for="crime">
+                  <input type="checkbox" id="crime" name="crime" value="1" <%= "checked" if @application.crime %>>
+                  Crime
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Label and input for explanation -->
+          <div class="form-group">
+            <label for="explanation" class="col-sm-2 control-label">
+              Explanation
+            </label>
+            <div class="col-sm-10">
+              <textarea id="explanation" name="explanation" placeholder="Explanation" class="form-control" rows="3"><%= @application.explanation %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for explanation_more -->
+          <div class="form-group">
+            <label for="explanation_more" class="col-sm-2 control-label">
+              Explanation more
+            </label>
+            <div class="col-sm-10">
+              <textarea id="explanation_more" name="explanation_more" placeholder="Explanation more" class="form-control" rows="3"><%= @application.explanation_more %></textarea>
+            </div>
+          </div>
+
+          <!-- Label and input for credit_check_approval -->
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label for="credit_check_approval">
+                  <input type="checkbox" id="credit_check_approval" name="credit_check_approval" value="1" <%= "checked" if @application.credit_check_approval %>>
+                  Credit check approval
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Label and input for bg_check_approval -->
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label for="bg_check_approval">
+                  <input type="checkbox" id="bg_check_approval" name="bg_check_approval" value="1" <%= "checked" if @application.bg_check_approval %>>
+                  Bg check approval
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Label and input for signature -->
+          <div class="form-group">
+            <label for="signature" class="col-sm-2 control-label">
+              Signature
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="signature" name="signature" placeholder="Signature" class="form-control" value="<%= @application.signature %>">
+            </div>
+          </div>
+
+          <!-- Label and input for signature_date -->
+          <div class="form-group">
+            <label for="signature_date" class="col-sm-2 control-label">
+              Signature date
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="signature_date" name="signature_date" placeholder="Signature date" class="form-control" value="<%= @application.signature_date %>">
+            </div>
+          </div>
+
+          <!-- Label and input for status -->
+          <div class="form-group">
+            <label for="status" class="col-sm-2 control-label">
+              Status
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @application.status %>">
+            </div>
+          </div>
+
+          <!-- Label and input for listing_id -->
+          <div class="form-group">
+            <label for="listing_id" class="col-sm-2 control-label">
+              Listing
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="listing_id" name="listing_id" placeholder="Listing" class="form-control" value="<%= @application.listing_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for renter_id -->
+          <div class="form-group">
+            <label for="renter_id" class="col-sm-2 control-label">
+              Renter
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="renter_id" name="renter_id" placeholder="Renter" class="form-control" value="<%= @application.renter_id %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Application
+              </button>
+              or
+              <a href="/applications/<%= @application.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->
