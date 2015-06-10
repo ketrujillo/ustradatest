@@ -4,7 +4,12 @@ before_filter :authenticate_landlord!, except: [ :index, :show ]
 
 
   def index
-    @listings = Listing.all
+
+    # if current_landlord.present?
+    #   @listings = Listing.current_landlord.all
+    # elsif current_renter.present?
+      @listings = Listing.all
+    # end
   end
 
   def show
@@ -36,7 +41,7 @@ before_filter :authenticate_landlord!, except: [ :index, :show ]
     @listing.image_file5 = params[:image_file5]
     @listing.landlord_id = current_landlord.id
     @listing.contact_email = params[:contact_email]
-    @listing.status = params[:status]
+    @listing.status = 0
 
     if @listing.save
       redirect_to "/listings", :notice => "Listing created successfully."
