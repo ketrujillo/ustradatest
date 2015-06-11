@@ -9,194 +9,137 @@
       <div class="panel-body">
 
         <div class="col-md-12">
-        <div class="row">
-        <div class="col-md-6">
-            <dl class="dl-horizontal">
-              <dt><b>Title</b></dt>
-              <dd><%= @application.listing.title %></dd>
-              <dt><b>First Name</b></dt>
-              <dd><%= @application.first_name %></dd>
-              <dt><b>Middle Name</b></dt>
-              <dd><%= @application.middle_name %></dd>
-              <dt><b>Last Name</b></dt>
-              <dd><%= @application.last_name %></dd>
-              <dt><b>DOB</b></dt>
-              <dd><%= @application.dob %></dd>
-              <dt><b>Email</b></dt>
-              <dd><%= @application.email %></dd>
-              <dt><b>Current Address</b></dt>
-              <dd><%= @application.address_0 %></dd>
-              <dt><b>Current City</b></dt>
-              <dd><%= @application.city_0 %></dd>
-              <dt><b>Current State</b></dt>
-              <dd><%= @application.state_0 %></dd>
-              <dt><b>Current Zip Code</b></dt>
-              <dd><%= @application.zip_0 %></dd>
-              <dt><b>Current Address From</b></dt>
-              <dd><%= @application.address_date_from_0 %></dd>
-              <dt><b>Current Address To</b></dt>
-              <dd><%= @application.address_date_to_0 %></dd>
-              <dt><b>Current Rent</b></dt>
-              <dd><%= @application.rent_0 %></dd>
-              <dt><b>Current Landlord Name</b></dt>
-              <dd><%= @application.landlord_name_0 %></dd>
-            </dl>
-          </div>
-          <div class="col-md-6">
-          <dl class="dl-horizontal">
-              <dt><b>Employer Name</b></dt>
-              <dd><%= @application.employer_name_0 %></dd>
-              <dt><b>Employer role</b></dt>
-              <dd><%= @application.employer_role_0 %></dd>
-              <dt><b>Employer salary</b></dt>
-              <dd><%= @application.employer_salary_0 %></dd>
-              <dt><b>Employer address</b></dt>
-              <dd><%= @application.employer_address_0 %></dd>
-              <dt><b>Employer city</b></dt>
-              <dd><%= @application.employer_city_0 %></dd>
-              <dt><b>Employer state</b></dt>
-              <dd><%= @application.employer_state_0 %></dd>
-              <dt><b>Employer zip</b></dt>
-              <dd><%= @application.employer_zip_0 %></dd>
-              <dt><b>Employer start date</b></dt>
-              <dd><%= @application.employer_date_from_0 %></dd>
-              <dt><b>Employer end date</b></dt>
-              <dd><%= @application.employer_date_to_0 %></dd>
-              <dt><b>Manager</b></dt>
-              <dd><%= @application.employer_manager_0 %></dd>
-              <dt><b>Dogs #</b></dt>
-              <dd><%= @application.pets_dogs %></dd>
-              <dt><b>Cats #</b></dt>
-              <dd><%= @application.pets_cats %></dd>
-              <dt><b>Other Pets #</b></dt>
-              <dd><%= @application.pets_other %></dd>
-              <dt><b>Pets Details</b></dt>
-              <dd><%= @application.pets_explanation %></dd>
+          <div class="row">
+            <div class="col-md-6">
+              <dl class="dl-horizontal">
+                <dt><b>Title</b></dt>
+                <dd><%= @application.listing.title %></dd>
+                <dt><b>First Name</b></dt>
+                <dd><%= @application.first_name %></dd>
+                <dt><b>Middle Name</b></dt>
+                <dd><%= @application.middle_name %></dd>
+                <dt><b>Last Name</b></dt>
+                <dd><%= @application.last_name %></dd>
+                <dt><b>DOB</b></dt>
+                <dd><%= @application.dob %></dd>
+                <dt><b>Email</b></dt>
+                <dd><%= @application.email %></dd>
+                <dt><b>Current Address</b></dt>
+                <dd><%= @application.address_0 %></dd>
+                <dt><b>Current City</b></dt>
+                <dd><%= @application.city_0 %></dd>
+                <dt><b>Current State</b></dt>
+                <dd><%= @application.state_0 %></dd>
+                <dt><b>Current Zip Code</b></dt>
+                <dd><%= @application.zip_0 %></dd>
+                <dt><b>Current Address From</b></dt>
+                <dd><%= @application.address_date_from_0 %></dd>
+                <dt><b>Current Address To</b></dt>
+                <dd><%= @application.address_date_to_0 %></dd>
+                <dt><b>Current Rent</b></dt>
+                <dd><%= @application.rent_0 %></dd>
+                <dt><b>Current Landlord Name</b></dt>
+                <dd><%= @application.landlord_name_0 %></dd>
+              </dl>
+            </div>
+            <div class="col-md-6">
+              <dl class="dl-horizontal">
+                <dt><b>Employer Name</b></dt>
+                <dd><%= @application.employer_name_0 %></dd>
+                <dt><b>Employer role</b></dt>
+                <dd><%= @application.employer_role_0 %></dd>
+                <dt><b>Employer salary</b></dt>
+                <dd><%= @application.employer_salary_0 %></dd>
+                <dt><b>Employer address</b></dt>
+                <dd><%= @application.employer_address_0 %></dd>
+                <dt><b>Employer city</b></dt>
+                <dd><%= @application.employer_city_0 %></dd>
+                <dt><b>Employer state</b></dt>
+                <dd><%= @application.employer_state_0 %></dd>
+                <dt><b>Employer zip</b></dt>
+                <dd><%= @application.employer_zip_0 %></dd>
+                <dt><b>Employer start date</b></dt>
+                <dd><%= @application.employer_date_from_0 %></dd>
+                <dt><b>Employer end date</b></dt>
+                <dd><%= @application.employer_date_to_0 %></dd>
+                <dt><b>Manager</b></dt>
+                <dd><%= @application.employer_manager_0 %></dd>
+                <dt><b>Dogs #</b></dt>
+                <dd><%= @application.pets_dogs %></dd>
+                <dt><b>Cats #</b></dt>
+                <dd><%= @application.pets_cats %></dd>
+                <dt><b>Other Pets #</b></dt>
+                <dd><%= @application.pets_other %></dd>
+                <dt><b>Pets Details</b></dt>
+                <dd><%= @application.pets_explanation %></dd>
 
-          </dl>
+
+
+
+
+              </dl>
+            </div>
           </div>
+          <div class="row">
+            <div class="col-md-12">
+              <dl class="dl-horizontal">
+                <dt><b>Eviction</b></dt>
+                <dd><%= @application.eviction %></dd>
+                <dt><b>Bankruptcy</b></dt>
+                <dd><%= @application.bankruptcy %></dd>
+                <dt><b>Felony</b></dt>
+                <dd><%= @application.crime %></dd>
+                <dt><b>Explanation of above:</b></dt>
+                <dd><%= @application.explanation %></dd>
+                <dt><b>Additional Comments</b></dt>
+                <dd><%= @application.explanation_more %></dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <dl class="dl-horizontal">
+                  <dt><b>Check Credit?</b></dt>
+                  <dd><%= @application.credit_check_approval %></dd>
+                  <dt><b>Check Background?</b></dt>
+                  <dd><%= @application.bg_check_approval %></dd>
+                  <dt><b>E-Signature Entered</b></dt>
+                  <dd><%= @application.signature %></dd>
+                </div>
+              </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+              <% if current_renter.present? %>
+              <div class="col-sm-offset-8 col-sm-4">
+                <a href="/applications" class="btn btn-primary">
+                  <i class="fa fa-chevron-left"> Return </i>
+                </a>
+
+                <a href="/applications/<%= @application.id %>/edit" class="btn btn-primary">
+                  <i class="fa fa-edit"></i>
+                </a>
+
+
+
+                <% elsif current_landlord.present? %>
+                <div class="col-sm-offset-10 col-sm-2">
+                  <a href="/applications/?listingid=<%= @application.listing_id %>"  class="btn btn-primary">
+                    <i class="fa fa-chevron-left"> Return </i>
+                  </a>
+                  <%else %>
+                  <%end %>
+
+
+                </div>
+              </div></div>
+            </div>
+          </form>
         </div>
-
-
-        </div>
-      </div>
-      <div class="row">
-      <div class="col-md-12">
-
-          <!-- Label and input for eviction -->
-          <div class="form-group">
-
-            <div class="col-sm-offset-2 col-sm-10">
-            <b>Please select the following if they apply:</b>
-            </div>
-
-
-
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label for="eviction">
-
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Label and input for bankruptcy -->
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label for="bankruptcy">
-
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Label and input for crime -->
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label for="crime">
-
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Label and input for explanation -->
-          <div class="form-group">
-            <label for="explanation" class="col-sm-2 control-label">
-              Explanation
-            </label>
-            <div class="col-sm-10">
-              <%= @application.explanation %>
-            </div>
-          </div>
-
-          <!-- Label and input for explanation_more -->
-          <div class="form-group">
-            <label for="explanation_more" class="col-sm-2 control-label">
-              Additional Comments
-            </label>
-            <div class="col-sm-10">
-              <%= @application.explanation_more %>
-            </div>
-          </div>
-
-          <!-- Label and input for credit_check_approval -->
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label for="credit_check_approval">
-
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Label and input for bg_check_approval -->
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label for="bg_check_approval">
-
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Label and input for signature -->
-          <div class="form-group">
-            <label for="signature" class="col-sm-2 control-label">
-              Signature
-            </label>
-            <div class="col-sm-10">
-              <%= @application.explanation_more %>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-            <% if current_renter.present? %>
-              <a href="/applications" class="btn btn-warning">
-                <i class="fa fa-chevron-left"></i>
-              </a>
-            <% elsif current_landlord.present? %>
-              <a href="/listings/<%= @application.listing_id %>"  class="btn btn-warning">
-                <i class="fa fa-chevron-left"></i>
-              </a>
-            <%else %>
-            <%end %>
-
-
-            </div>
-            </div></div>
-          </div>
-        </form>
       </div>
     </div>
   </div>
-</div>
 
 <!-- End responsive panel example -->

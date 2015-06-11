@@ -2,96 +2,100 @@
 
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-      <div class="row">
-        <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
 
         <h2><b><%= @listing.title.upcase %> | $<%= @listing.price %> </b></h2>
-        </div>
-      <br><br>
       </div>
-      <div class="row">
-        <div class="col-md-6">
+      <br><br>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
         <img src="http://i.imgur.com/dUuFaPn.jpg" class="img-responsive">
-        </div>
-        <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
         <div class="row">
           <div class="col-md-6">
-          <table class="table">
-          <tr>
-            <td><b>Price</b></td>
-            <td><b>BR </b></td>
-            <td><b>BA </b></td>
-            <td><b>Available</b></td>
-            <td><b>Term</b></td>
-            <td><b>Status</b></td>
-          </tr>
+            <table class="table">
+              <tr>
+                <td><b>Price</b></td>
+                <td><b>BR </b></td>
+                <td><b>BA </b></td>
+                <td><b>Available</b></td>
+                <td><b>Term</b></td>
+                <td><b>Status</b></td>
+              </tr>
 
-          <tr>
-            <td><%= @listing.price %> </td>
-            <td><%= @listing.bedrooms %> </td>
-            <td><%= @listing.bathrooms %> </td>
-            <td><%= @listing.date_available %></td>
-            <td><%= @listing.term %>mo</td>
-            <td>
-                <% if @listing.status == 0 %>
-                Available
-                <% elsif @listing.status == 1 %>
-                Rented
-                <% else %>
+              <tr>
+                <td><%= @listing.price %> </td>
+                <td><%= @listing.bedrooms %> </td>
+                <td><%= @listing.bathrooms %> </td>
+                <td><%= @listing.date_available %></td>
+                <td><%= @listing.term %>mo</td>
+                <td>
+                  <% if @listing.status == 0 %>
+                  Available
+                  <% elsif @listing.status == 1 %>
+                  Rented
+                  <% else %>
 
-                <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="6"><%= @listing.description %></td>
-          </tr>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6"><%= @listing.description %></td>
+              </tr>
 
-          </table>
+            </table>
           </div>
         </div>
 
-        </div>
       </div>
-      <div class="row">
+    </div>
+    <div class="row">
 
-            <div class="col-sm-10">
-            <% if current_landlord.present? %>
-            <p class="text-success">
-            <h3>
+      <div class="col-sm-10">
+        <% if current_landlord.present? %>
+        <p class="text-success">
+          <h3>
             <%= link_to " View Applicants ", {:controller => "applications", :action => "index", :listingid => @listing.id }%>
-            </h3>
-            </p>
-            <br>
+          </h3>
+        </p>
+        <br>
 
-            <div class="btn-group btn-group-md">
-              <a href="/listings" class="btn btn-warning">
-                <i class="fa fa-chevron-left"></i>
-              </a>
+        <div class="btn-group btn-group-md">
+          <a href="/listings" class="btn btn-primary">
+            <i class="fa fa-chevron-left"></i>
+          </a>
 
-              <a href="/listings/<%= @listing.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
+          <a href="/listings/<%= @listing.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
 
-              <a href="/delete_listing/<%= @listing.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </div>
-            <% elsif current_renter.present? %>
-            <br><br>
-            <p class="text-success">
-            <h3>
-            <%= link_to " Apply Now ", {:controller => "applications", :action => "new", :listingid => @listing.id }%>
-            </h3>
-            </p>
-            <% else %>
-            <% end %>
-          </div>
-      </div>
-      </div>
-          </div>
+          <a href="/delete_listing/<%= @listing.id %>" class="btn btn-danger" rel="nofollow">
+            <i class="fa fa-trash-o"></i>
+          </a>
         </div>
+        <% elsif current_renter.present? %>
+        <p class="text-success">
+          <h3>
+            <%= link_to " Apply Now ", {:controller => "applications", :action => "new", :listingid => @listing.id }%>
+          </h3>
+        </p>
+        <div class="btn-group btn-group-md">
+          <a href="/listings" class="btn btn-primary">
+            <i class="fa fa-chevron-left">&nbsp;&nbsp;&nbsp;Return&nbsp;&nbsp;</i>
+          </a>
+        </div>
+        <% else %>
+        <% end %>
       </div>
+    </div>
   </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 <!-- End responsive panel example -->

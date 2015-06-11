@@ -1,22 +1,40 @@
 class ApplicationsController < ApplicationController
 
-before_filter :authenticate_renter!, except: [ :index, :show ]
+    before_filter :authenticate_renter!, except: [ :index, :show ]
 
-  def index
+    before_action :check_if_owner, only: [:show, :edit, :update, :destroy]
+
+    def check_if_owner
+        if current_renter.present?
+            application = Application.find(params[:id])
+            if application.renter_id.to_i != current_renter.id.to_i
+              redirect_to "/applications", notice: "Nope! That's not yours"
+          end
+      elsif
+        application = Application.find(params[:id])
+        if application.listing.landlord_id.to_i != current_landlord.id.to_i
+          redirect_to "/listings", notice: "Nope! That's not yours"
+        end
+        else
+        end
+    end
+
+
+def index
     @applications = Application.all
     @listing_pass_id = params[:listingid]
-  end
+end
 
-  def show
+def show
     @application = Application.find(params[:id])
-  end
+end
 
-  def new
+def new
     @application = Application.new
     @listing_pass_id = params[:listingid]
-  end
+end
 
-  def create
+def create
     @application = Application.new
     @application.first_name = params[:first_name]
     @application.middle_name = params[:middle_name]
@@ -63,16 +81,16 @@ before_filter :authenticate_renter!, except: [ :index, :show ]
 
     if @application.save
       redirect_to "/applications", :notice => "Application created successfully."
-    else
+  else
       render 'new'
-    end
   end
+end
 
-  def edit
+def edit
     @application = Application.find(params[:id])
-  end
+end
 
-  def update
+def update
     @application = Application.find(params[:id])
 
     @application.first_name = params[:first_name]
@@ -120,16 +138,16 @@ before_filter :authenticate_renter!, except: [ :index, :show ]
 
     if @application.save
       redirect_to "/applications", :notice => "Application updated successfully."
-    else
+  else
       render 'edit'
-    end
   end
+end
 
-  def destroy
+def destroy
     @application = Application.find(params[:id])
 
     @application.destroy
 
     redirect_to "/applications", :notice => "Application deleted."
-  end
+end
 end

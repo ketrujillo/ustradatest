@@ -6,6 +6,17 @@ class ListingsController < ApplicationController
 
 before_filter :authenticate_landlord!, except: [ :index, :show ]
 
+    before_action :check_if_owner2, only: [:show, :edit, :update, :destroy]
+
+    def check_if_owner2
+        if current_landlord.present?
+            listing = Listing.find(params[:id])
+            if listing.landlord_id.to_i != current_landlord.id.to_i
+              redirect_to "/listings", notice: "Nope! That's not yours"
+          end
+
+        end
+    end
 
   def index
 
