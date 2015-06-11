@@ -73,7 +73,7 @@ belongs_to :listing
 
   validates :renter_id, presence: true
 
-
+  validates :listing_id, presence: true
 
 protected
 

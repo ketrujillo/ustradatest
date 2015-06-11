@@ -24,7 +24,22 @@
 
           <!-- Label and input for first_name -->
       <div class="col-md-12">
+      <div class="col-md-12">
       <div class="row">
+
+      <div class="form-group">
+      <label for="listing_id" class="col-md-4 control-label">
+        Listing Title
+      </label>
+      <div class="col-md-5">
+              <%= select_tag(:listing_id, options_from_collection_for_select(Listing.all, :id, :title, @listing_pass_id), :class => "form-control") %>
+      </div>
+      </div>
+
+
+      </div>
+
+      </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="first_name" class="col-md-4 control-label">
@@ -61,7 +76,7 @@
               Dob
             </label>
             <div class="col-md-6">
-              <input type="date" id="dob" name="dob" placeholder="Dob" class="form-control" value="<%= current_renter.dob %>">
+              <input type="date" id="dob" name="dob" placeholder="Date of Birth" class="form-control" value="<%= current_renter.dob %>">
             </div>
           </div>
 
@@ -81,7 +96,7 @@
               Current Address
             </label>
             <div class="col-md-6">
-              <input type="text" id="address_0" name="address_0" placeholder="Address 0" class="form-control" value="<%= current_renter.address_0 %>">
+              <input type="text" id="address_0" name="address_0" placeholder="Current Address" class="form-control" value="<%= current_renter.address_0 %>">
             </div>
           </div>
 
@@ -91,7 +106,7 @@
               Current City
             </label>
             <div class="col-md-6">
-              <input type="text" id="city_0" name="city_0" placeholder="City 0" class="form-control" value="<%= current_renter.city_0 %>">
+              <input type="text" id="city_0" name="city_0" placeholder="Current City" class="form-control" value="<%= current_renter.city_0 %>">
             </div>
           </div>
 
@@ -101,7 +116,7 @@
               Current State
             </label>
             <div class="col-md-6">
-              <input type="text" id="state_0" name="state_0" placeholder="State 0" class="form-control" value="<%= current_renter.state_0 %>">
+              <input type="text" id="state_0" name="state_0" placeholder="Current State" class="form-control" value="<%= current_renter.state_0 %>">
             </div>
           </div>
 
@@ -111,7 +126,7 @@
               Current Zip
             </label>
             <div class="col-md-6">
-              <input type="text" id="zip_0" name="zip_0" placeholder="Zip 0" class="form-control" value="<%= current_renter.zip_0 %>">
+              <input type="text" id="zip_0" name="zip_0" placeholder="Current Zip Code" class="form-control" value="<%= current_renter.zip_0 %>">
             </div>
           </div>
 
@@ -121,7 +136,7 @@
               Current Address From
             </label>
             <div class="col-md-6">
-              <input type="date" id="address_date_from_0" name="address_date_from_0" placeholder="Address date from 0" class="form-control" value="<%= current_renter.address_date_from_0 %>">
+              <input type="date" id="address_date_from_0" name="address_date_from_0" placeholder="Current Address Move-In Date" class="form-control" value="<%= current_renter.address_date_from_0 %>">
             </div>
           </div>
 
@@ -131,7 +146,7 @@
               Current Address To
             </label>
             <div class="col-md-6">
-              <input type="date" id="address_date_to_0" name="address_date_to_0" placeholder="Address date to 0" class="form-control" value="<%= current_renter.address_date_to_0 %>">
+              <input type="date" id="address_date_to_0" name="address_date_to_0" placeholder="Current Address Move-Out Date" class="form-control" value="<%= current_renter.address_date_to_0 %>">
             </div>
           </div>
 
@@ -141,7 +156,7 @@
               Rent
             </label>
             <div class="col-md-6">
-              <input type="number" id="rent_0" name="rent_0" placeholder="Rent 0" class="form-control" value="<%= current_renter.rent_0 %>">
+              <input type="number" id="rent_0" name="rent_0" placeholder="Current Rent" class="form-control" value="<%= current_renter.rent_0 %>">
             </div>
           </div>
 
@@ -151,7 +166,7 @@
               Landlord name
             </label>
             <div class="col-md-6">
-              <input type="text" id="landlord_name_0" name="landlord_name_0" placeholder="Landlord name 0" class="form-control" value="<%= current_renter.landlord_name_0 %>">
+              <input type="text" id="landlord_name_0" name="landlord_name_0" placeholder="Landlord Name" class="form-control" value="<%= current_renter.landlord_name_0 %>">
             </div>
           </div>
         </div>
@@ -163,7 +178,7 @@
               Employer name
             </label>
             <div class="col-md-6">
-              <input type="text" id="employer_name_0" name="employer_name_0" placeholder="Employer name 0" class="form-control" value="<%= @application.employer_name_0 %>">
+              <input type="text" id="employer_name_0" name="employer_name_0" placeholder="Employer Name" class="form-control" value="<%= @application.employer_name_0 %>">
             </div>
           </div>
 
@@ -173,7 +188,7 @@
               Employer role
             </label>
             <div class="col-md-6">
-              <input type="text" id="employer_role_0" name="employer_role_0" placeholder="Employer role 0" class="form-control" value="<%= @application.employer_role_0 %>">
+              <input type="text" id="employer_role_0" name="employer_role_0" placeholder="Role" class="form-control" value="<%= @application.employer_role_0 %>">
             </div>
           </div>
 
@@ -183,7 +198,7 @@
               Employer salary
             </label>
             <div class="col-md-6">
-              <input type="number" id="employer_salary_0" name="employer_salary_0" placeholder="Employer salary 0" class="form-control" value="<%= @application.employer_salary_0 %>">
+              <input type="number" id="employer_salary_0" name="employer_salary_0" placeholder="Salary" class="form-control" value="<%= @application.employer_salary_0 %>">
             </div>
           </div>
 
@@ -193,7 +208,7 @@
               Employer address
             </label>
             <div class="col-md-6">
-              <input type="text" id="employer_address_0" name="employer_address_0" placeholder="Employer address 0" class="form-control" value="<%= @application.employer_address_0 %>">
+              <input type="text" id="employer_address_0" name="employer_address_0" placeholder="Employer Address" class="form-control" value="<%= @application.employer_address_0 %>">
             </div>
           </div>
 
@@ -203,7 +218,7 @@
               Employer city
             </label>
             <div class="col-md-6">
-              <input type="text" id="employer_city_0" name="employer_city_0" placeholder="Employer city 0" class="form-control" value="<%= @application.employer_city_0 %>">
+              <input type="text" id="employer_city_0" name="employer_city_0" placeholder="Employer City" class="form-control" value="<%= @application.employer_city_0 %>">
             </div>
           </div>
 
@@ -213,7 +228,7 @@
               Employer state
             </label>
             <div class="col-md-6">
-              <input type="text" id="employer_state_0" name="employer_state_0" placeholder="Employer state 0" class="form-control" value="<%= @application.employer_state_0 %>">
+              <input type="text" id="employer_state_0" name="employer_state_0" placeholder="Employer State" class="form-control" value="<%= @application.employer_state_0 %>">
             </div>
           </div>
 
@@ -223,7 +238,7 @@
               Employer zip
             </label>
             <div class="col-md-6">
-              <input type="text" id="employer_zip_0" name="employer_zip_0" placeholder="Employer zip 0" class="form-control" value="<%= @application.employer_zip_0 %>">
+              <input type="text" id="employer_zip_0" name="employer_zip_0" placeholder="Employer Zip" class="form-control" value="<%= @application.employer_zip_0 %>">
             </div>
           </div>
 
@@ -233,7 +248,7 @@
               Employer date start:
             </label>
             <div class="col-md-6">
-              <input type="date" id="employer_date_from_0" name="employer_date_from_0" placeholder="Employer date from 0" class="form-control" value="<%= @application.employer_date_from_0 %>">
+              <input type="date" id="employer_date_from_0" name="employer_date_from_0" placeholder="Employer Start Date" class="form-control" value="<%= @application.employer_date_from_0 %>">
             </div>
           </div>
 
@@ -243,7 +258,7 @@
               Employer date to:
             </label>
             <div class="col-md-6">
-              <input type="date" id="employer_date_to_0" name="employer_date_to_0" placeholder="Employer date to 0" class="form-control" value="<%= @application.employer_date_to_0 %>">
+              <input type="date" id="employer_date_to_0" name="employer_date_to_0" placeholder="Employer End Date or Current Date" class="form-control" value="<%= @application.employer_date_to_0 %>">
             </div>
           </div>
 
@@ -253,7 +268,7 @@
               Manager
             </label>
             <div class="col-md-6">
-              <input type="text" id="employer_manager_0" name="employer_manager_0" placeholder="Employer manager 0" class="form-control" value="<%= @application.employer_manager_0 %>">
+              <input type="text" id="employer_manager_0" name="employer_manager_0" placeholder="Manager" class="form-control" value="<%= @application.employer_manager_0 %>">
             </div>
           </div>
 
@@ -293,7 +308,7 @@
               Pets explanation
             </label>
             <div class="col-md-6">
-              <textarea id="pets_explanation" name="pets_explanation" placeholder="Pets explanation" class="form-control" rows="3"><%= @application.pets_explanation %></textarea>
+              <textarea id="pets_explanation" name="pets_explanation" placeholder="Please provide pet details" class="form-control" rows="3"><%= @application.pets_explanation %></textarea>
             </div>
           </div>
         </div>
@@ -397,12 +412,6 @@
               <input type="text" id="signature" name="signature" placeholder="Signature" class="form-control" value="<%= @application.signature %>">
             </div>
           </div>
-
-
-          <!-- Label and input for listing_id -->
-<%= @listing_pass_id %>
-
-              <input type="hidden" id="listing_id" name="listing_id" value="<%= @listing_pass_id %>">
 
 
           <div class="form-group">

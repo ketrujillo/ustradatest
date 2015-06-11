@@ -45,34 +45,7 @@
           <tr>
             <td colspan="6"><%= @listing.description %></td>
           </tr>
-          <tr>
-            <td colspan="6">
-[google maps placeholder]
-          <!-- Code for Google Map -->
-              <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-              <script>
-                var map;
-                function initialize() {
-                  var myLatlng = new google.maps.LatLng(<%= @the_latitude %>, <%= @the_longitude %>);
-                  var mapOptions = {
-                    zoom: 15,
-                    center: myLatlng
-                  };
-                  map = new google.maps.Map(document.getElementById('map-canvas'),
-                    mapOptions);
-                  var marker = new google.maps.Marker({
-                        position: myLatlng,
-                        map: map,
-                        title: '<%= @listing.title %>'
-                    });
-                }
-                google.maps.event.addDomListener(window, 'load', initialize);
-              </script>
 
-              <div id="map-canvas"></div>
-
-            </td>
-          </tr>
           </table>
           </div>
         </div>
@@ -80,10 +53,16 @@
         </div>
       </div>
       <div class="row">
-            <br><br>
 
-
+            <div class="col-sm-10">
             <% if current_landlord.present? %>
+            <p class="text-success">
+            <h3>
+            <%= link_to " View Applicants ", {:controller => "applications", :action => "index", :listingid => @listing.id }%>
+            </h3>
+            </p>
+            <br>
+
             <div class="btn-group btn-group-md">
               <a href="/listings" class="btn btn-warning">
                 <i class="fa fa-chevron-left"></i>
@@ -98,7 +77,7 @@
               </a>
             </div>
             <% elsif current_renter.present? %>
-            </div>
+            <br><br>
             <p class="text-success">
             <h3>
             <%= link_to " Apply Now ", {:controller => "applications", :action => "new", :listingid => @listing.id }%>
@@ -106,6 +85,8 @@
             </p>
             <% else %>
             <% end %>
+          </div>
+      </div>
       </div>
           </div>
         </div>

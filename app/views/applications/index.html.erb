@@ -1,219 +1,107 @@
 <div class="page-header">
   <h1>
-    Applications
-    <a href="/applications/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+    My Applications
   </h1>
 </div>
 
-<!-- Responsive, Isotope-based layout example -->
-
-<div class="row">
-  <div class="col-xs-12">
-    <input type="text" id="quicksearch" placeholder="Search Applications (start typing)" class="form-control">
-  </div>
-</div>
 
 <hr>
 
-<div class="row isotope-container">
+
+<table class="table table-hover">
+<tr>
+<% if current_renter.present? %>
+
+  <td>Listing Title </td>
+  <td>Price </td>
+  <td>BR </td>
+  <td>BA </td>
+  <td>Status</td>
+  <td> </td>
+  <td> </td>
+  <td> </td>
+  <% elsif current_landlord.present? %>
+  <td>Listing Title </td>
+  <td>First Name </td>
+  <td>Last Name </td>
+  <td>Email </td>
+  <td>Salary </td>
+  <td>Date Created </td>
+  <td> </td>
+  <% else %>
+
+  <% end %>
+</tr>
+
 <% @applications.each do |application| %>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Application #<%= application.id %></h3>
-      </div>
-      <div class="panel-body">
-        <dl>
-          <dt>First name</dt>
-          <dd><%= application.first_name %></dd>
 
-          <dt>Middle name</dt>
-          <dd><%= application.middle_name %></dd>
+<% if current_renter.present? %>
 
-          <dt>Last name</dt>
-          <dd><%= application.last_name %></dd>
+<% if application.renter_id.to_i == current_renter.id.to_i %>
 
-          <dt>Dob</dt>
-          <dd><%= application.dob %></dd>
+<tr>
+  <td><%= application.listing.title %> </td>
+  <td><%= application.listing.price %> </td>
+  <td><%= application.listing.bedrooms %> </td>
+  <td><%= application.listing.bathrooms %> </td>
+  <td>
+      <% if application.listing.status == 0 %>
+      Available
+      <% elsif application.listing.status == 1 %>
+      Rented
+      <% else %>
 
-          <dt>Email</dt>
-          <dd><%= application.email %></dd>
+      <% end %>
+  </td>
 
-          <dt>Mobile</dt>
-          <dd><%= application.mobile %></dd>
+  <td>
+      <a href="/applications/<%= application.id %>" class="btn btn-primary">
+        <i class="fa fa-search-plus"></i>
+      </a>
+  </td>
 
-          <dt>Address 0</dt>
-          <dd><%= application.address_0 %></dd>
+  <td>
+      <a href="/applications/<%= application.id %>/edit" class="btn btn-primary">
+        <i class="fa fa-edit"></i>
+      </a>
+  </td>
 
-          <dt>City 0</dt>
-          <dd><%= application.city_0 %></dd>
+  <td>
+      <a href="/delete_application/<%= application.id %>" class="btn btn-primary" rel="nofollow">
+        <i class="fa fa-trash-o"></i>
+      </a>
+  </td>
 
-          <dt>State 0</dt>
-          <dd><%= application.state_0 %></dd>
 
-          <dt>Zip 0</dt>
-          <dd><%= application.zip_0 %></dd>
+</tr>
+<% end %>
+<% elsif current_landlord.present? %>
 
-          <dt>Address date from 0</dt>
-          <dd><%= application.address_date_from_0 %></dd>
+<% if (application.listing.landlord_id.to_i == current_landlord.id.to_i) && (application.listing_id.to_i == @listing_pass_id.to_i) %>
 
-          <dt>Address date to 0</dt>
-          <dd><%= application.address_date_to_0 %></dd>
+<tr>
+  <td><%= application.listing.title %> </td>
+  <td><%= application.first_name %> </td>
+  <td><%= application.last_name %> </td>
+  <td><%= application.email %> </td>
+  <td><%= application.employer_salary_0 %> </td>
+  <td><%= application.created_at %> </td>
+  <td>
+      <a href="/applications/<%= application.id %>" class="btn btn-primary">
+        <i class="fa fa-search-plus"></i>
+      </a>
+  </td>
+</tr>
+<% else %>
 
-          <dt>Rent 0</dt>
-          <dd><%= application.rent_0 %></dd>
 
-          <dt>Landlord name 0</dt>
-          <dd><%= application.landlord_name_0 %></dd>
+<% end %>
+<% end %>
 
-          <dt>Landlord phone 0</dt>
-          <dd><%= application.landlord_phone_0 %></dd>
 
-          <dt>Employer name 0</dt>
-          <dd><%= application.employer_name_0 %></dd>
-
-          <dt>Employer role 0</dt>
-          <dd><%= application.employer_role_0 %></dd>
-
-          <dt>Employer salary 0</dt>
-          <dd><%= application.employer_salary_0 %></dd>
-
-          <dt>Employer address 0</dt>
-          <dd><%= application.employer_address_0 %></dd>
-
-          <dt>Employer city 0</dt>
-          <dd><%= application.employer_city_0 %></dd>
-
-          <dt>Employer state 0</dt>
-          <dd><%= application.employer_state_0 %></dd>
-
-          <dt>Employer zip 0</dt>
-          <dd><%= application.employer_zip_0 %></dd>
-
-          <dt>Employer date from 0</dt>
-          <dd><%= application.employer_date_from_0 %></dd>
-
-          <dt>Employer date to 0</dt>
-          <dd><%= application.employer_date_to_0 %></dd>
-
-          <dt>Employer manager 0</dt>
-          <dd><%= application.employer_manager_0 %></dd>
-
-          <dt>Employer phone 0</dt>
-          <dd><%= application.employer_phone_0 %></dd>
-
-          <dt>Pets dogs</dt>
-          <dd><%= application.pets_dogs %></dd>
-
-          <dt>Pets cats</dt>
-          <dd><%= application.pets_cats %></dd>
-
-          <dt>Pets other</dt>
-          <dd><%= application.pets_other %></dd>
-
-          <dt>Pets explanation</dt>
-          <dd><%= application.pets_explanation %></dd>
-
-          <dt>Eviction</dt>
-          <dd><%= application.eviction %></dd>
-
-          <dt>Bankruptcy</dt>
-          <dd><%= application.bankruptcy %></dd>
-
-          <dt>Crime</dt>
-          <dd><%= application.crime %></dd>
-
-          <dt>Explanation</dt>
-          <dd><%= application.explanation %></dd>
-
-          <dt>Explanation more</dt>
-          <dd><%= application.explanation_more %></dd>
-
-          <dt>Credit check approval</dt>
-          <dd><%= application.credit_check_approval %></dd>
-
-          <dt>Bg check approval</dt>
-          <dd><%= application.bg_check_approval %></dd>
-
-          <dt>Signature</dt>
-          <dd><%= application.signature %></dd>
-
-          <dt>Signature date</dt>
-          <dd><%= application.signature_date %></dd>
-
-          <dt>Status</dt>
-          <dd><%= application.status %></dd>
-
-          <dt>Listing</dt>
-          <dd><%= application.listing_id %></dd>
-
-          <dt>Renter</dt>
-          <dd><%= application.renter_id %></dd>
-
-        </dl>
-        <div class="btn-group btn-group-justified">
-          <a href="/applications/<%= application.id %>" class="btn btn-primary">
-            <i class="fa fa-search-plus"></i>
-          </a>
-
-          <a href="/applications/<%= application.id %>/edit" class="btn btn-warning">
-            <i class="fa fa-edit"></i>
-          </a>
-
-          <a href="/delete_application/<%= application.id %>" class="btn btn-danger" rel="nofollow">
-            <i class="fa fa-trash-o"></i>
-          </a>
-        </div>
       </div>
     </div>
   </div>
 <% end %>
 </div>
 
-<!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
-<!-- JavaScript for Isotope layout and quicksearch -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
-<script>
-  $(function() {
-    // quick search regex
-    var qsRegex;
-
-    // init Isotope
-    var $container = $('.isotope-container');
-
-    $container.imagesLoaded(function() {
-      $container.isotope({
-        itemSelector: '.isotope-item',
-        layoutMode: 'masonry',
-        filter: function() {
-          return qsRegex ? $(this).text().match( qsRegex ) : true;
-        }
-      })
-    });
-
-    // use value of search field to filter
-    var $quicksearch = $('#quicksearch').keyup( debounce( function() {
-      qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-      $container.isotope();
-    }, 200 ) );
-
-  });
-
-  // debounce so filtering doesn't happen every millisecond
-  function debounce( fn, threshold ) {
-    var timeout;
-    return function debounced() {
-      if ( timeout ) {
-        clearTimeout( timeout );
-      }
-      function delayed() {
-        fn();
-        timeout = null;
-      }
-      timeout = setTimeout( delayed, threshold || 100 );
-    }
-  }
-</script>
-
-<!-- End responsive, Isotope-based layout example -->
