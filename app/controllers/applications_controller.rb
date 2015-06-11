@@ -1,4 +1,7 @@
 class ApplicationsController < ApplicationController
+
+before_filter :authenticate_renter!, except: [ :index, :show ]
+
   def index
     @applications = Application.all
   end
@@ -9,6 +12,7 @@ class ApplicationsController < ApplicationController
 
   def new
     @application = Application.new
+    @listing_pass_id = params[:listingid]
   end
 
   def create
@@ -53,8 +57,8 @@ class ApplicationsController < ApplicationController
     @application.signature = params[:signature]
     @application.signature_date = params[:signature_date]
     @application.status = params[:status]
+    @application.renter_id = current_renter.id
     @application.listing_id = params[:listing_id]
-    @application.renter_id = params[:renter_id]
 
     if @application.save
       redirect_to "/applications", :notice => "Application created successfully."

@@ -1,39 +1,160 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-9 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1 class="panel-title">Edit <%= resource_name.to_s.humanize %></h1>
+      </div>
+      <div class="panel-body">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal", method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <% if current_renter.present? %>
+
+
+        <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :middle_name %><br />
+          <%= f.text_field :middle_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Date of Birth" %><br />
+          <%= f.date_field :dob %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "New Password" %> <i>(Leave blank if not changing)</i><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "New Password Confirmation" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+
+
+        </div>
+        <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label "Current Address" %><br />
+          <%= f.text_field :address_0  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Current City" %><br />
+          <%= f.text_field :city_0  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Current State" %><br />
+          <%= f.text_field :state_0  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Current Zip Code" %><br />
+          <%= f.text_field :zip_0  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Current Address From:" %><br />
+          <%= f.date_field :address_date_from_0  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Current Address To:" %><br />
+          <%= f.date_field :address_date_to_0  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Current Rent" %><br />
+          <%= f.number_field :rent_0  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Current Landlord" %><br />
+          <%= f.text_field :landlord_name_0  %>
+        </div>
+
+        </div>
+        <% else %>
+        <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "New Password" %> <i>(Leave blank if not changing)</i><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "New Password Confirmation" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        </div>
+
+        <% end %>
+
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+
+        <br>
+
+        <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :current_password %> <i>(Need current password for changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update" %>
+        </div>
+        <% end %>
+        </div>
+        <div class"col-md-6">
+
+        <div class="form-group">
+          <h3>Cancel my account</h3>
+
+          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+          <%= link_to "Back", :back %>
+        </div>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

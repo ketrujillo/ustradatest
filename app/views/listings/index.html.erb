@@ -51,11 +51,7 @@
 
 <% if current_landlord.present? %>
 
-<%= listing.landlord_id %>
-a
-<%= current_landlord.id %>
-
-<% if 1 > 0 %>
+<% if listing.landlord_id.to_i == current_landlord.id.to_i %>
 
 <tr>
   <td><%= listing.title %> </td>

@@ -2,77 +2,90 @@
 
 <div class="row">
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Listing #<%= @listing.id %></h3>
+      <div class="row">
+        <div class="col-md-12">
+
+        <h2><b><%= @listing.title.upcase %> | $<%= @listing.price %> </b></h2>
+        </div>
+      <br><br>
       </div>
-      <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+        <img src="http://i.imgur.com/dUuFaPn.jpg" class="img-responsive">
+        </div>
+        <div class="col-md-6">
         <div class="row">
-          <div class="col-md-12">
-            <dl class="dl-horizontal">
-              <dt>Title</dt>
-              <dd><%= @listing.title %></dd>
+          <div class="col-md-6">
+          <table class="table">
+          <tr>
+            <td><b>Price</b></td>
+            <td><b>BR </b></td>
+            <td><b>BA </b></td>
+            <td><b>Available</b></td>
+            <td><b>Term</b></td>
+            <td><b>Status</b></td>
+          </tr>
 
-              <dt>Description</dt>
-              <dd><%= @listing.description %></dd>
+          <tr>
+            <td><%= @listing.price %> </td>
+            <td><%= @listing.bedrooms %> </td>
+            <td><%= @listing.bathrooms %> </td>
+            <td><%= @listing.date_available %></td>
+            <td><%= @listing.term %>mo</td>
+            <td>
+                <% if @listing.status == 0 %>
+                Available
+                <% elsif @listing.status == 1 %>
+                Rented
+                <% else %>
 
-              <dt>Bedrooms</dt>
-              <dd><%= @listing.bedrooms %></dd>
+                <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6"><%= @listing.description %></td>
+          </tr>
+          <tr>
+            <td colspan="6">
+[google maps placeholder]
+          <!-- Code for Google Map -->
+              <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+              <script>
+                var map;
+                function initialize() {
+                  var myLatlng = new google.maps.LatLng(<%= @the_latitude %>, <%= @the_longitude %>);
+                  var mapOptions = {
+                    zoom: 15,
+                    center: myLatlng
+                  };
+                  map = new google.maps.Map(document.getElementById('map-canvas'),
+                    mapOptions);
+                  var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title: '<%= @listing.title %>'
+                    });
+                }
+                google.maps.event.addDomListener(window, 'load', initialize);
+              </script>
 
-              <dt>Bathrooms</dt>
-              <dd><%= @listing.bathrooms %></dd>
+              <div id="map-canvas"></div>
 
-              <dt>Price</dt>
-              <dd><%= @listing.price %></dd>
+            </td>
+          </tr>
+          </table>
+          </div>
+        </div>
 
-              <dt>Date available</dt>
-              <dd><%= @listing.date_available %></dd>
+        </div>
+      </div>
+      <div class="row">
+            <br><br>
 
-              <dt>Term</dt>
-              <dd><%= @listing.term %></dd>
 
-              <dt>Address</dt>
-              <dd><%= @listing.address %></dd>
-
-              <dt>Unit</dt>
-              <dd><%= @listing.unit %></dd>
-
-              <dt>City</dt>
-              <dd><%= @listing.city %></dd>
-
-              <dt>State</dt>
-              <dd><%= @listing.state %></dd>
-
-              <dt>Zip</dt>
-              <dd><%= @listing.zip %></dd>
-
-              <dt>Image file1</dt>
-              <dd><%= @listing.image_file1 %></dd>
-
-              <dt>Image file2</dt>
-              <dd><%= @listing.image_file2 %></dd>
-
-              <dt>Image file3</dt>
-              <dd><%= @listing.image_file3 %></dd>
-
-              <dt>Image file4</dt>
-              <dd><%= @listing.image_file4 %></dd>
-
-              <dt>Image file5</dt>
-              <dd><%= @listing.image_file5 %></dd>
-
-              <dt>Landlord</dt>
-              <dd><%= @listing.landlord_id %></dd>
-
-              <dt>Contact email</dt>
-              <dd><%= @listing.contact_email %></dd>
-
-              <dt>Status</dt>
-              <dd><%= @listing.status %></dd>
-
-            </dl>
-            <div class="btn-group btn-group-justified">
-              <a href="/listings" class="btn btn-primary">
+            <% if current_landlord.present? %>
+            <div class="btn-group btn-group-md">
+              <a href="/listings" class="btn btn-warning">
                 <i class="fa fa-chevron-left"></i>
               </a>
 
@@ -84,10 +97,19 @@
                 <i class="fa fa-trash-o"></i>
               </a>
             </div>
+            <% elsif current_renter.present? %>
+            </div>
+            <p class="text-success">
+            <h3>
+            <%= link_to " Apply Now ", {:controller => "applications", :action => "new", :listingid => @listing.id }%>
+            </h3>
+            </p>
+            <% else %>
+            <% end %>
+      </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 

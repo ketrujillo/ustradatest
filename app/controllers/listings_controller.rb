@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'json'
+
+
 class ListingsController < ApplicationController
 
 before_filter :authenticate_landlord!, except: [ :index, :show ]
@@ -14,6 +18,18 @@ before_filter :authenticate_landlord!, except: [ :index, :show ]
 
   def show
     @listing = Listing.find(params[:id])
+    @url_safe_street_address = URI.encode(@listing.address + " " + @listing.unit + " " + @listing.city + " " + @listing.state + " " + @listing.zip)
+
+
+    @url_of_data_we_want = "http://maps.googleapis.com/maps/api/geocode/json?address=" + @url_safe_street_address
+    @raw_data = open(@url_of_data_we_want).read
+    @parsed_data = JSON.parse(@raw_data)
+    @the_latitude = @parsed_data["results"][0]["geometry"]["location"]["lat"]
+    @the_longitude = @parsed_data["results"][0]["geometry"]["location"]["lng"]
+
+
+
+
   end
 
   def new

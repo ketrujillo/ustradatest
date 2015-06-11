@@ -1,12 +1,12 @@
 <!-- Validation failure messages -->
 
 <% if @listing.errors.any? %>
-  <% @listing.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @listing.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <!-- Responsive panel example -->
@@ -21,233 +21,234 @@
         <form action="/create_listing" method="post" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-<div class="col-md-6">
-          <!-- Label and input for title -->
-          <div class="form-group">
-            <label for="title" class="col-sm-3 control-label">
-              Title
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @listing.title %>">
+          <div class="col-md-6">
+            <!-- Label and input for title -->
+            <div class="form-group">
+              <label for="title" class="col-sm-3 control-label">
+                Title
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @listing.title %>">
+              </div>
+            </div>
+
+            <!-- Label and input for price -->
+            <div class="form-group">
+              <label for="price" class="col-sm-3 control-label">
+                Price
+              </label>
+              <div class="col-sm-9">
+                <input type="number" id="price" name="price" placeholder="Price" class="form-control" value="<%= @listing.price %>" min="50" max="15000" step="5"></input>
+
+              </div>
+
+            </div>
+
+            <!-- Label and input for bedrooms -->
+            <div class="form-group">
+              <label for="bedrooms" class="col-sm-3 control-label">
+                BRs
+              </label>
+              <div class="col-sm-3">
+                <select class="form-control" id="bedrooms" name="bedrooms" value="<%= @listing.bedrooms %>">
+                  <option <%= if @listing.bedrooms == 0 then "selected" end%>>0</option>
+                  <option <%= if @listing.bedrooms == 1 then "selected" end%>>1</option>
+                  <option <%= if @listing.bedrooms == 2 then "selected" end%>>2</option>
+                  <option <%= if @listing.bedrooms == 3 then "selected" end%>>3</option>
+                  <option <%= if @listing.bedrooms == 4 then "selected" end%>>4</option>
+                  <option <%= if @listing.bedrooms == 5 then "selected" end%>>5</option>
+                  <option <%= if @listing.bedrooms == 6 then "selected" end%>>6</option>
+                  <option <%= if @listing.bedrooms == 7 then "selected" end%>>7</option>
+                  <option <%= if @listing.bedrooms == 8 then "selected" end%>>8</option>
+                  <option <%= if @listing.bedrooms == 9 then "selected" end%>>9</option>
+                  <option <%= if @listing.bedrooms == 10 then "selected" end%>>10</option>
+                </select>
+
+              </div>
+
+              <label for="bathrooms" class="col-sm-3 control-label">
+                BAs
+              </label>
+              <div class="col-sm-3">
+                <select class="form-control" id="bathrooms" name="bathrooms" value="<%= @listing.bathrooms %>">
+                  <option <%= if @listing.bathrooms == 0 then "selected" end%>>0</option>
+                  <option <%= if @listing.bathrooms == 0.5 then "selected" end%>>0.5</option>
+                  <option <%= if @listing.bathrooms == 1.0 then "selected" end%>>1.0</option>
+                  <option <%= if @listing.bathrooms == 1.5 then "selected" end%>>1.5</option>
+                  <option <%= if @listing.bathrooms == 2.0 then "selected" end%>>2.0</option>
+                  <option <%= if @listing.bathrooms == 2.5 then "selected" end%>>2.5</option>
+                  <option <%= if @listing.bathrooms == 3.0 then "selected" end%>>3.0</option>
+                  <option <%= if @listing.bathrooms == 3.5 then "selected" end%>>3.5</option>
+                  <option <%= if @listing.bathrooms == 4.0 then "selected" end%>>4.0</option>
+                  <option <%= if @listing.bathrooms == 4.5 then "selected" end%>>4.5</option>
+                  <option <%= if @listing.bathrooms == 5.0 then "selected" end%>>5.0</option>
+                  <option <%= if @listing.bathrooms == 5.5 then "selected" end%>>5.5</option>
+                  <option <%= if @listing.bathrooms == 6.0 then "selected" end%>>6.0</option>
+                  <option <%= if @listing.bathrooms == 6.5 then "selected" end%>>6.5</option>
+                  <option <%= if @listing.bathrooms == 7.0 then "selected" end%>>7.0</option>
+                  <option <%= if @listing.bathrooms == 7.5 then "selected" end%>>7.5</option>
+                  <option <%= if @listing.bathrooms == 8.0 then "selected" end%>>8.0</option>
+                  <option <%= if @listing.bathrooms == 8.5 then "selected" end%>>8.5</option>
+                  <option <%= if @listing.bathrooms == 9.0 then "selected" end%>>9.0</option>
+
+                </select>
+              </div>
+            </div>
+
+
+            <!-- Label and input for description -->
+            <div class="form-group">
+              <label for="description" class="col-sm-3 control-label">
+                Description
+              </label>
+              <div class="col-sm-9">
+                <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @listing.description %></textarea>
+              </div>
+            </div>
+
+            <!-- Label and input for date_available -->
+            <div class="form-group">
+              <label for="date_available" class="col-sm-3 control-label">
+                Date available
+              </label>
+              <div class="col-sm-9">
+                <input type="date" id="date_available" name="date_available" placeholder="Date available" class="form-control" value="<%= @listing.date_available %>">
+              </div>
+            </div>
+
+            <!-- Label and input for term -->
+            <div class="form-group">
+              <label for="term" class="col-sm-3 control-label">
+                Term (Months)
+              </label>
+              <div class="col-sm-9">
+                <input type="number" id="term" name="term" placeholder="Term" class="form-control" value="<%= @listing.term %>" min="1" max="36">
+              </div>
+            </div>
+
+            <!-- Label and input for contact_email -->
+            <div class="form-group">
+              <label for="contact_email" class="col-sm-3 control-label">
+                Contact email
+              </label>
+              <div class="col-sm-9">
+                <input type="email" id="contact_email" name="contact_email" placeholder="Contact email" class="form-control" value="<%= current_landlord.email %>">
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <!-- Label and input for address -->
+            <div class="form-group">
+              <label for="address" class="col-sm-3 control-label">
+                Address
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @listing.address %>">
+              </div>
+            </div>
+
+            <!-- Label and input for unit -->
+            <div class="form-group">
+              <label for="unit" class="col-sm-3 control-label">
+                Unit
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="unit" name="unit" placeholder="Unit" class="form-control" value="<%= @listing.unit %>">
+              </div>
+            </div>
+
+            <!-- Label and input for city -->
+            <div class="form-group">
+              <label for="city" class="col-sm-3 control-label">
+                City
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @listing.city %>">
+              </div>
+            </div>
+
+            <!-- Label and input for state -->
+            <div class="form-group">
+              <label for="state" class="col-sm-3 control-label">
+                State
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @listing.state %>">
+              </div>
+            </div>
+
+            <!-- Label and input for zip -->
+            <div class="form-group">
+              <label for="zip" class="col-sm-3 control-label">
+                Zip
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="zip" name="zip" placeholder="Zip" class="form-control" value="<%= @listing.zip %>">
+              </div>
+            </div>
+
+            <!-- Label and input for image_file1 -->
+            <div class="form-group">
+              <label for="image_file1" class="col-sm-3 control-label">
+                Image file1
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="image_file1" name="image_file1" placeholder="Image file1" class="form-control" value="<%= @listing.image_file1 %>">
+              </div>
+            </div>
+
+            <!-- Label and input for image_file2 -->
+            <div class="form-group">
+              <label for="image_file2" class="col-sm-3 control-label">
+                Image file2
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="image_file2" name="image_file2" placeholder="Image file2" class="form-control" value="<%= @listing.image_file2 %>">
+              </div>
+            </div>
+
+            <!-- Label and input for image_file3 -->
+            <div class="form-group">
+              <label for="image_file3" class="col-sm-3 control-label">
+                Image file3
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="image_file3" name="image_file3" placeholder="Image file3" class="form-control" value="<%= @listing.image_file3 %>">
+              </div>
+            </div>
+
+            <!-- Label and input for image_file4 -->
+            <div class="form-group">
+              <label for="image_file4" class="col-sm-3 control-label">
+                Image file4
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="image_file4" name="image_file4" placeholder="Image file4" class="form-control" value="<%= @listing.image_file4 %>">
+              </div>
+            </div>
+
+            <!-- Label and input for image_file5 -->
+            <div class="form-group">
+              <label for="image_file5" class="col-sm-3 control-label">
+                Image file5
+              </label>
+              <div class="col-sm-9">
+                <input type="text" id="image_file5" name="image_file5" placeholder="Image file5" class="form-control" value="<%= @listing.image_file5 %>">
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-9">
+                <button class="btn btn-success">
+                  Create Listing
+                </button>
+                or
+                <a href="/listings">Cancel</a>
+              </div>
             </div>
           </div>
-
-          <!-- Label and input for price -->
-          <div class="form-group">
-            <label for="price" class="col-sm-3 control-label">
-              Price
-            </label>
-            <div class="col-sm-9">
-              <input type="number" id="price" name="price" placeholder="Price" class="form-control" value="<%= @listing.price %>" min="50" max="15000" step="5"></input>
-
-            </div>
-
-          </div>
-
-          <!-- Label and input for bedrooms -->
-          <div class="form-group">
-            <label for="bedrooms" class="col-sm-3 control-label">
-              BRs
-            </label>
-            <div class="col-sm-3">
-              <select class="form-control" id="bedrooms" name="bedrooms" value="<%= @listing.bedrooms %>">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
-
-            </div>
-
-            <label for="bathrooms" class="col-sm-3 control-label">
-              BAs
-            </label>
-            <div class="col-sm-3">
-              <select class="form-control" id="bathrooms" name="bathrooms" value="<%= @listing.bathrooms %>">
-                <option>0</option>
-                <option>0.5</option>
-                <option>1.0</option>
-                <option>1.5</option>
-                <option>2.0</option>
-                <option>2.5</option>
-                <option>3.0</option>
-                <option>3.5</option>
-                <option>4.0</option>
-                <option>4.5</option>
-                <option>5.0</option>
-                <option>5.5</option>
-                <option>6.0</option>
-                <option>6.5</option>
-                <option>7.0</option>
-                <option>7.5</option>
-                <option>8.0</option>
-                <option>8.5</option>
-                <option>9.0</option>
-
-              </select>
-            </div>
-          </div>
-
-
-          <!-- Label and input for description -->
-          <div class="form-group">
-            <label for="description" class="col-sm-3 control-label">
-              Description
-            </label>
-            <div class="col-sm-9">
-              <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @listing.description %></textarea>
-            </div>
-          </div>
-
-          <!-- Label and input for date_available -->
-          <div class="form-group">
-            <label for="date_available" class="col-sm-3 control-label">
-              Date available
-            </label>
-            <div class="col-sm-9">
-              <input type="date" id="date_available" name="date_available" placeholder="Date available" class="form-control" value="<%= @listing.date_available %>">
-            </div>
-          </div>
-
-          <!-- Label and input for term -->
-          <div class="form-group">
-            <label for="term" class="col-sm-3 control-label">
-              Term (Months)
-            </label>
-            <div class="col-sm-9">
-              <input type="number" id="term" name="term" placeholder="Term" class="form-control" value="<%= @listing.term %>" min="1" max="36">
-            </div>
-          </div>
-
-          <!-- Label and input for contact_email -->
-          <div class="form-group">
-            <label for="contact_email" class="col-sm-3 control-label">
-              Contact email
-            </label>
-            <div class="col-sm-9">
-              <input type="email" id="contact_email" name="contact_email" placeholder="Contact email" class="form-control" value="<%= @listing.contact_email %>">
-            </div>
-          </div>
-
-</div>
-<div class="col-md-6">
-          <!-- Label and input for address -->
-          <div class="form-group">
-            <label for="address" class="col-sm-3 control-label">
-              Address
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @listing.address %>">
-            </div>
-          </div>
-
-          <!-- Label and input for unit -->
-          <div class="form-group">
-            <label for="unit" class="col-sm-3 control-label">
-              Unit
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="unit" name="unit" placeholder="Unit" class="form-control" value="<%= @listing.unit %>">
-            </div>
-          </div>
-
-          <!-- Label and input for city -->
-          <div class="form-group">
-            <label for="city" class="col-sm-3 control-label">
-              City
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @listing.city %>">
-            </div>
-          </div>
-
-          <!-- Label and input for state -->
-          <div class="form-group">
-            <label for="state" class="col-sm-3 control-label">
-              State
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @listing.state %>">
-            </div>
-          </div>
-
-          <!-- Label and input for zip -->
-          <div class="form-group">
-            <label for="zip" class="col-sm-3 control-label">
-              Zip
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="zip" name="zip" placeholder="Zip" class="form-control" value="<%= @listing.zip %>">
-            </div>
-          </div>
-
-          <!-- Label and input for image_file1 -->
-          <div class="form-group">
-            <label for="image_file1" class="col-sm-3 control-label">
-              Image file1
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="image_file1" name="image_file1" placeholder="Image file1" class="form-control" value="<%= @listing.image_file1 %>">
-            </div>
-          </div>
-
-          <!-- Label and input for image_file2 -->
-          <div class="form-group">
-            <label for="image_file2" class="col-sm-3 control-label">
-              Image file2
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="image_file2" name="image_file2" placeholder="Image file2" class="form-control" value="<%= @listing.image_file2 %>">
-            </div>
-          </div>
-
-          <!-- Label and input for image_file3 -->
-          <div class="form-group">
-            <label for="image_file3" class="col-sm-3 control-label">
-              Image file3
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="image_file3" name="image_file3" placeholder="Image file3" class="form-control" value="<%= @listing.image_file3 %>">
-            </div>
-          </div>
-
-          <!-- Label and input for image_file4 -->
-          <div class="form-group">
-            <label for="image_file4" class="col-sm-3 control-label">
-              Image file4
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="image_file4" name="image_file4" placeholder="Image file4" class="form-control" value="<%= @listing.image_file4 %>">
-            </div>
-          </div>
-
-          <!-- Label and input for image_file5 -->
-          <div class="form-group">
-            <label for="image_file5" class="col-sm-3 control-label">
-              Image file5
-            </label>
-            <div class="col-sm-9">
-              <input type="text" id="image_file5" name="image_file5" placeholder="Image file5" class="form-control" value="<%= @listing.image_file5 %>">
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-9">
-              <button class="btn btn-success">
-                Create Listing
-              </button>
-              or
-              <a href="/listings">Cancel</a>
-            </div>
-          </div>
-</div>
         </form>
       </div>
     </div>
